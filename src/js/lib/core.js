@@ -36,6 +36,13 @@ $.prototype.init = function(selector) {
     if (!selector) {
         return this; //{}
     }
+
+    if (selector.tagName) {
+        this[0] = selector;
+        this.length = 1;
+        return this;
+    } //Is the selector actually a DOM element?
+
     Object.assign(this, document.querySelectorAll(selector)) // добавляет свойства в объект 
     this.length = document.querySelectorAll(selector).length;
 

@@ -1,17 +1,311 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-button {
-  width: 150px;
-  height: 40px;
-  background-color: #77d0e9;
+.container {
+  max-width: 1140px;
+  padding: 0px 15px;
+  margin: 0px auto;
+}
+
+* {
+  font-family: sans-serif;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #025fff;
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #343a40;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: all 0.2s;
+}
+.btn:hover {
+  background-color: rgb(53, 127.2529644269, 255);
+  color: white;
+}
+.btn-primary {
+  background-color: #025fff;
+  border-color: #025fff;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: rgb(0, 75.7233201581, 206);
+}
+.btn-success {
+  background-color: #2a9934;
+  border-color: #2a9934;
+  color: white;
+}
+.btn-success:hover {
+  background-color: rgb(31.0153846154, 112.9846153846, 38.4);
+}
+.btn-danger {
+  background-color: rgb(255, 49, 49);
+  border-color: rgb(255, 49, 49);
+  color: white;
+}
+.btn-danger:hover {
+  background-color: #fd0000;
+}
+.btn-warning {
+  background-color: #ffc907;
+  border-color: #ffc907;
+  color: white;
+}
+.btn-warning:hover {
+  background-color: rgb(211, 165.0564516129, 0);
+}
+.btn-dark {
+  background-color: #343a40;
+  border-color: #343a40;
+  color: white;
+}
+.btn-dark:hover {
+  background-color: rgb(29.1379310345, 32.5, 35.8620689655);
+}
+.btn-outline-primary {
+  border-color: #025fff;
+  color: #025fff;
+}
+.btn-outline-primary:hover {
+  background-color: #025fff;
+}
+.btn-outline-success {
+  border-color: #2a9934;
+  color: #2a9934;
+}
+.btn-outline-success:hover {
+  background-color: #2a9934;
+}
+.btn-outline-danger {
+  border-color: rgb(255, 49, 49);
+  color: rgb(255, 49, 49);
+}
+.btn-outline-danger:hover {
+  background-color: rgb(255, 49, 49);
+}
+.btn-outline-warning {
+  border-color: #ffc907;
+  color: #ffc907;
+}
+.btn-outline-warning:hover {
+  background-color: #ffc907;
+}
+.btn-outline-dark {
+  border-color: #343a40;
+  color: #343a40;
+}
+.btn-outline-dark:hover {
+  background-color: #343a40;
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.text-center {
   text-align: center;
 }
 
-.active {
+.block-center {
+  margin: 0 auto;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: flex;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.f-centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.f-space-around {
+  justify-content: space-around;
+}
+
+.f-space-between {
+  justify-content: space-between;
+}
+
+.fz-16 {
+  font-size: 16px;
+}
+
+.fz-20 {
   font-size: 20px;
-  color: rgb(183, 3, 3);
+}
+
+.fz-24 {
+  font-size: 24px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.thin {
+  font-weight: 300;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.text-color-primary {
+  color: #025fff;
+}
+
+.text-color-danger {
+  color: rgb(255, 49, 49);
+}
+
+.text-color-success {
+  color: #2a9934;
+}
+
+.text-color-warning {
+  color: #ffc907;
+}
+
+.text-color-dark {
+  color: #343a40;
+}
+
+.m10 {
+  margin: 10px;
+}
+
+.m20 {
+  margin: 20px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+.p10 {
+  padding: 10px;
+}
+
+.p20 {
+  padding: 20px;
+}
+
+.pt-10 {
+  padding-top: 10px;
+}
+
+.pr-10 {
+  padding-right: 10px;
+}
+
+.pb-10 {
+  padding-bottom: 10px;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.pt-20 {
+  padding-top: 20px;
+}
+
+.pr-20 {
+  padding-right: 20px;
+}
+
+.pb-20 {
+  padding-bottom: 20px;
+}
+
+.pl-20 {
+  padding-left: 20px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-300 {
+  width: 300px;
+}
+
+.w-500 {
+  width: 500px;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.h-50 {
+  height: 50%;
+}
+
+.h-300 {
+  height: 300px;
+}
+
+.h-500 {
+  height: 500px;
 }

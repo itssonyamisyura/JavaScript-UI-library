@@ -16,4 +16,6 @@ $('div').click(function(){
 
 // console.log($('button').html());
 
-console.log($('.findme').siblings());
+// console.log($('.findme').siblings());
+
+$('.findme').fadeIn(1800);

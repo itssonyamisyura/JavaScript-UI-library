@@ -114,6 +114,36 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.createModal = function (
 
 /***/ },
 
+/***/ "./src/js/lib/components/tab.js"
+/*!**************************************!*\
+  !*** ./src/js/lib/components/tab.js ***!
+  \**************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.tab = function () {
+  for (let i = 0; i < this.length; i++) {
+    (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).on('click', () => {
+      // 1) remove active from all tabs
+      (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).closest('.tab').find('.tab-item').removeClass('tab-item--active');
+
+      // 2) add active only to clicked tab
+      (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).addClass('tab-item--active');
+
+      // 3) switch content
+      (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).closest('.tab').find('.tab-content').removeClass('tab-content--active').eq((0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).index()).addClass('tab-content--active');
+    });
+  }
+};
+(0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-tabpanel] .tab-item').tab();
+
+// у соседних эл убираем active class -> ищем родителя, чтоб перейти в след div
+// узнать номер эл по порядку, на котором произошло событие(contnet#)
+
+/***/ },
+
 /***/ "./src/js/lib/core.js"
 /*!****************************!*\
   !*** ./src/js/lib/core.js ***!
@@ -197,6 +227,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_effects__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/effects */ "./src/js/lib/modules/effects.js");
 /* harmony import */ var _components_dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/dropdown */ "./src/js/lib/components/dropdown.js");
 /* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/modal */ "./src/js/lib/components/modal.js");
+/* harmony import */ var _components_tab__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/tab */ "./src/js/lib/components/tab.js");
+
 
 
 
@@ -256,16 +288,42 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.index = function () {
 // номер эл по порядку среди сверсников(имеющих одного родителя)
 
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.find = function (selector) {
-  let items = [];
-  for (let i = 0; i < this.length; i++) {
-    let arr = this[i].querySelectorAll(selector);
-    items.push(...arr);
-    delete this[i];
+  let numberOfItems = 0;
+  let counter = 0;
+  const copyObj = Object.assign({}, this);
+  for (let i = 0; i < copyObj.length; i++) {
+    if (!copyObj[i]) continue;
+    const arr = copyObj[i].querySelectorAll(selector);
+    if (arr.length == 0) {
+      continue;
+    }
+    for (let j = 0; j < arr.length; j++) {
+      this[counter] = arr[j];
+      counter++;
+    }
+    numberOfItems += arr.length;
   }
-  Object.assign(this, items);
-  this.length = items.length;
+  this.length = numberOfItems;
+  const objLength = Object.keys(this).length;
+  for (; numberOfItems < objLength; numberOfItems++) {
+    delete this[numberOfItems];
+  }
   return this;
 };
+// $.prototype.find = function (selector) {
+//     let items = [];
+
+//     for (let i = 0; i < this.length; i++) {
+//         let arr = this[i].querySelectorAll(selector);
+//         items.push(...arr);
+//         delete this[i];
+//     }
+
+//     Object.assign(this, items);
+//     this.length = items.length;
+
+//     return this;
+// };
 // находим элементы среди уже выбранных
 
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.closest = function (selector) {

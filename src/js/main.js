@@ -26,6 +26,7 @@ $('button').eq(2).on('click', () => {
 
 // $('.dropdown-toggle').dropdown();
 
+
 $('#trigger').click(() => $('#trigger').createModal({
     text: {
         title: 'Modal title',

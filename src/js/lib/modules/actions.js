@@ -43,21 +43,50 @@ $.prototype.index = function() {
 // номер эл по порядку среди сверсников(имеющих одного родителя)
 
 
+$.prototype.find = function(selector) {
+    let numberOfItems = 0;
+    let counter = 0;
 
-$.prototype.find = function (selector) {
-    let items = [];
- 
-    for (let i = 0; i < this.length; i++) {
-        let arr = this[i].querySelectorAll(selector);
-        items.push(...arr);
-        delete this[i];
+    const copyObj = Object.assign({}, this);
+
+    for (let i = 0; i < copyObj.length; i++) {
+        if (!copyObj[i]) continue;
+        const arr = copyObj[i].querySelectorAll(selector);
+        if (arr.length == 0) {
+            continue;
+        }
+
+        for (let j = 0; j < arr.length; j++) {
+            this[counter] = arr[j];
+            counter++;
+        }
+
+        numberOfItems += arr.length;
     }
- 
-    Object.assign(this, items);
-    this.length = items.length;
- 
+
+    this.length = numberOfItems;
+
+    const objLength = Object.keys(this).length;
+    for (; numberOfItems < objLength; numberOfItems++) {
+        delete this[numberOfItems];
+    }
+
     return this;
 };
+// $.prototype.find = function (selector) {
+//     let items = [];
+ 
+//     for (let i = 0; i < this.length; i++) {
+//         let arr = this[i].querySelectorAll(selector);
+//         items.push(...arr);
+//         delete this[i];
+//     }
+ 
+//     Object.assign(this, items);
+//     this.length = items.length;
+ 
+//     return this;
+// };
 // находим элементы среди уже выбранных
 
 
